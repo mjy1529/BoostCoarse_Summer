@@ -26,3 +26,4 @@
   * 접두어 : ch - char, db-double, str-string, b-boolean 등
   * ex) chHungarian
   
+###### [참고] http://guswnsxodlf.github.io/camelcase-pascalcase-snakecase

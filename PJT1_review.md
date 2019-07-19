@@ -1,4 +1,4 @@
-# PJT1.영화상세 화면 만들기 Code Review
+# PJT1. 영화상세 화면 만들기 Code Review
 
 ### ◆ Advice 1
 > 프로젝트를 통째로 전달 시에는 반드시 <b>clean build</b>를 하고 전송해야 합니다.

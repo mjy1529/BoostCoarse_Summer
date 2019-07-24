@@ -1,10 +1,12 @@
 # PJT1. 영화상세 화면 만들기 Code Review
 
+<img src="https://user-images.githubusercontent.com/25261296/61787012-dae81800-ae49-11e9-8eb1-ee33e07bfd19.png" width="250"> <img src="https://user-images.githubusercontent.com/25261296/61787193-403c0900-ae4a-11e9-829d-0e4fa98b3f89.png" width="250">
+
 ### ◆ Advice 1
-> 프로젝트를 통째로 전달 시에는 반드시 <b>clean build</b>를 하고 전송해야 합니다.
+> 프로젝트를 통째로 전달 시에는 반드시 <b>clean build</b>를 하고 전송해야 함.
 
 ### ◆ Advice 2
-> xml 파일에서 id에 대한 naming은 일반적으로 <b>헝가리언 표기법</b>과 <b>snake case</b>를 혼용하여 사용합니다. 
+> xml 파일에서 id에 대한 naming은 일반적으로 <b>헝가리언 표기법</b>과 <b>snake case</b>를 혼용하여 사용함. 
 
 <br>
 

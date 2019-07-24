@@ -8,7 +8,7 @@
 
 <br>
 
-### cf) 변수 네이밍
+#### cf) 변수 네이밍
 * Lower Camel Case
   * 각 단어의 첫 문자를 대문자로 표시하되, 이름의 첫 문자는 소문자로 적는다.
   * ex) camelCase

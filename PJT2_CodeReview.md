@@ -1,7 +1,7 @@
 # PJT2. 좋아요와 한줄평 리스트 Code Review
 <table>
   <tr><td><img src="https://user-images.githubusercontent.com/25261296/61945965-4e219380-afdc-11e9-9fb3-b50ee8c74929.png" width="250"></td>
-      <td><img src="https://user-images.githubusercontent.com/25261296/61945965-4e219380-afdc-11e9-9fb3-b50ee8c74929.png" width="250"></td>
+      <td><img src="https://user-images.githubusercontent.com/25261296/61956662-9484eb80-aff8-11e9-8ae8-21225cdfe825.png" width="250"></td>
       <td><img src="https://user-images.githubusercontent.com/25261296/61946054-87f29a00-afdc-11e9-8715-0c820a5fbdfa.png" width="250"></td></tr>
 </table>
 

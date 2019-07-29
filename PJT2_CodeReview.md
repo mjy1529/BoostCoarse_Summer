@@ -11,8 +11,39 @@
 + <b>전체 화면 중에서 일부분만 차지하는 화면 구성요소들은 LayoutInflater 클래스를 사용해야 한다.</b>
 
 + LayoutInflater inflater = (LayoutInflater) <b>getSystemService</b>(Context.LAYOUT_INFLATER_SERVICE);<br>
-inflater.<b>inflate</b>(R.layout.sub1, container, true);
-<br><br>
+inflater.<b>inflate</b>(R.layout.sub1, container, true);<br><br>
+
+### ◆ 리스트뷰
++ 대표적인 <b>선택 위젯</b> : 리스트뷰, 스피너, 그리드뷰, 갤러리
+
++ 사용방법
+1) <b>아이템을 위한 xml 레이아웃</b> 정의하기
+2) <b>아이템을 위한 뷰</b> 정의하기
+3) 데이터 관리 역할을 하는 <b>어댑터 클래스</b>를 만들고 그 안에 각 아이템으로 표시할 뷰를 리턴하는 <b>getView()</b> 메소드 정의하기<br>
+class <b>SingerAdapter</b> extends BaseAdapter {<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;ArrayList<SingerItem> items = new ArrayList<>();<br><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;public int <b>getCount()</b> { return items.size(); }<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;public Object <b>getItem(int position)</b> { return items.get(position); }<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;public long <b>getItemId(int position)</b> { return position; }<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;public View <b>getView(int position, View convertView, ViewGroup parent)</b> { <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SingerItemView view = new SingerItemView(getApplicationContext());<br><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;SingerItem item = items.get(position);<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;view.setName(item.getName());<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;view.setMobile(item.getMobile());<br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return view;<br>&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+}<br>
+4) 화면에 보여줄 <b>리스트뷰</b>를 만들고 그 안에 데이터가 선택되었을 때 호출될 리스너 객체 정의하기<br>
+  <b>listView.setOnItemClickListener()</b><br><br>
+
+### ◆ 스피너
++ 콤보박스
+
++ 사용방법<br>
+<b>Spinner</b> spinner = (Spinner) findViewById(R.id.spinner);<br>
+<b>ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, items);</b><br>
+  adapter.<b>setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);</b><br>
+spinner.setAdapter(adapter);<br><br>
+spinner.<b>setOnItemSelectedListener</b>(...)
+<br><br><br>
 
 # PJT2. 좋아요와 한줄평 리스트 Code Review
 <table>

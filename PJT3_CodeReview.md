@@ -10,12 +10,12 @@
 </table>
 
 ### ◆ Advice 1
-> PostReviewActivity에서 사용자가 작성한 리뷰를 모두보기 리스트에 업데이트하여 적용해 보세요.<br>
--> startActivityForResult()를 사용하여 reviewList를 받아와 해결
+PostReviewActivity에서 사용자가 작성한 리뷰를 모두보기 리스트에 업데이트하여 적용해 보세요.<br>
+> -> startActivityForResult()를 사용하여 reviewList를 받아와 해결
 
 ### ◆ Advice 2
-> 리뷰 작성 화면(activity_post_review.xml)을 <b>가로로 회전시킬 때</b> 화면 내에 모든 아이템들이 나오지 않습니다.<br>
--> 해결방법 : 화면 전환에 따른 UI 교체<br>
+리뷰 작성 화면(activity_post_review.xml)을 <b>가로로 회전시킬 때</b> 화면 내에 모든 아이템들이 나오지 않습니다.<br>
+> -> 해결방법 : 화면 전환에 따른 UI 교체<br>
 1) 가로모드용 activity_post_review.xml(land) 레이아웃 생성
 2) AndroidManifest.xml에서 PostReviewActivity에 <b>android:configChanges="orientation"</b> 추가
 3) PostReviewActivity에 <b>onConfigurationChanged(Configuration newConfig)</b> 작성<br><br>

@@ -1,3 +1,15 @@
+# 부스트코스 Android 학습 내용<br> 
+
+### ◆ 액티비티 수명주기
++ 
+
+### ◆ 서비스
++ 
+
+### ◆ 브로드캐스트 수신자
++ 
+<br><br><br>
+
 # PJT3. 한줄평 화면으로 전환하기
 <table>
   <tr><td><img src="https://user-images.githubusercontent.com/25261296/62025945-8ca19300-b214-11e9-98b3-4ac83bc8ee70.png" width="250"></td>

@@ -17,7 +17,7 @@ protected void <b>onResume()</b> {<br>
 &nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(pref != null) {<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String name = pref.getString("name", "");<br>
 &nbsp;&nbsp;&nbsp;&nbsp;}<br>
-}<br>
+}<br><br>
 
 ### ◆ 서비스 (Service)
 + <b>화면이 없는 상태에서 백그라운드 실행</b>
@@ -63,7 +63,17 @@ protected void <b>onNewIntent</b>(Intent intent) {<br>
 }<br><br>
 
 ### ◆ 브로드캐스트 수신자
-+ 
++ 애플리케이션 구성요소 중 하나로 매니페스트에 등록해야 함<br><br>
+<b>&lt;uses-permission android:name="android.permission.RECEIVE_SMS"/&gt;&nbsp;</b>//&nbsp;SMS 수신 권한 추가<br><br>
+<receiver<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:name=".SmsReceiver"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:enabled="true"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:exported="true"><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;intent-filter&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>&lt;action android:name="android.provicer.Telephony.SMS_RECEIVED"/&gt;</b><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/intent-filter&gt;<br>
+&lt;/receiver&gt;<br>
+
 <br><br><br>
 
 # PJT3. 한줄평 화면으로 전환하기

@@ -31,7 +31,7 @@ protected void <b>onResume()</b> {<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:exported="true">&lt;/service><br><br>
 
 #### ◇ 액티비티에서 서비스를 호출할 때 (Activity → Service)
-+ <b>액티비티에서 Intent로 서비스 호출</b><br>
++ <b>액티비티에서 Intent로 서비스 호출</b><br><br>
 Intent intent = new Intent(getApplicationContext(), <b>MyService.class</b>);&nbsp;&nbsp;// 서비스 클래스<br>
 intent.putExtra("command", "show");<br>
 <b>startService(intent);</b>&nbsp;&nbsp;// 액티비티 호출 시엔 startActivity(intent)<br>
@@ -62,7 +62,7 @@ protected void <b>onNewIntent</b>(Intent intent) {<br>
 &nbsp;&nbsp;&nbsp;&nbsp;super.onNewIntent(intent);<br>
 }<br><br>
 
-### ◆ 브로드캐스트 수신자
+### ◆ 브로드캐스트 수신자 (Broadcast Receiver)
 + 애플리케이션 구성요소 중 하나로 매니페스트에 등록해야 함<br><br>
 <b>&lt;uses-permission android:name="android.permission.RECEIVE_SMS"/&gt;&nbsp;</b>//&nbsp;SMS 수신 권한 추가<br><br>
 <receiver<br>

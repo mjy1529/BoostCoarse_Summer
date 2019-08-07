@@ -72,8 +72,7 @@ protected void <b>onNewIntent</b>(Intent intent) {<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;intent-filter&gt;<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>&lt;action android:name="android.provicer.Telephony.SMS_RECEIVED"/&gt;</b><br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/intent-filter&gt;<br>
-&lt;/receiver&gt;<br>
-
+&lt;/receiver&gt;
 <br><br><br>
 
 # PJT3. 한줄평 화면으로 전환하기

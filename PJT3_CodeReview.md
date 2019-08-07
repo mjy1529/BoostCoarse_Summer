@@ -1,6 +1,6 @@
 # 부스트코스 Android 학습 내용<br> 
 
-### ◆ 액티비티 수명주기 (라이프 사이클)
+### ◆ 액티비티 수명주기 (Life Cycle)
 + <b>onCreate() → onStart() → onResume() → onPause() → onStop() → onDestroy()</b>
 
 + 주로 onResume()과 onPause()에서 <b>getSharedPreferences를 사용하여 값을 저장하고 복구</b><br><br>
@@ -19,7 +19,7 @@ protected void <b>onResume()</b> {<br>
 &nbsp;&nbsp;&nbsp;&nbsp;}<br>
 }<br>
 
-### ◆ 서비스
+### ◆ 서비스 (Service)
 + <b>화면이 없는 상태에서 백그라운드 실행</b>
 
 + <b>프로세스가 종료되어도 시스템에서 자동으로 재시작</b>
@@ -30,10 +30,11 @@ protected void <b>onResume()</b> {<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:enabled="true"<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:exported="true">&lt;/service><br><br>
 
-+ <b>액티비티에서 Intent로 서비스 호출</b><br><br>
+#### ◇ 액티비티에서 서비스를 호출할 때 (Activity → Service)
++ <b>액티비티에서 Intent로 서비스 호출</b><br>
 Intent intent = new Intent(getApplicationContext(), <b>MyService.class</b>);&nbsp;&nbsp;// 서비스 클래스<br>
 intent.putExtra("command", "show");<br>
-<b>startService(intent);</b>&nbsp;&nbsp;// 액티비티 호출 시엔 startActivity(intent)<br><br>
+<b>startService(intent);</b>&nbsp;&nbsp;// 액티비티 호출 시엔 startActivity(intent)<br>
 
 + 서비스는 시스템이 시작될 때 한번 실행되기 때문에 <b>액티비티에서 전달한 데이터는 onStartCommand()에서 받는다!!</b><br>
 onCreate() → onStartCommand() → onDestroy()<br><br>
@@ -44,6 +45,21 @@ public int <b>onStartCommand</b>(Intent intent, int flags, int startId) {<br>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String command = intent.getStringExtra("command");<br>
 &nbsp;&nbsp;&nbsp;&nbsp;}<br>
 &nbsp;&nbsp;&nbsp;&nbsp;return super.onStartCommand(intent, flags, startId);<br>
+}<br><br>
+#### ◇ 서비스에서 액티비티를 호출할 때 (Service → Activity)
++ <b>서비스에서 Intent로 액티비티 호출</b><br><br>
+Intent showIntent = new Intent(getApplicationContext(), MainActivity.class);<br>
+showIntent.<b>addFlags</b>(Intent.FLAG_ACTIVITY_NEW_TASK | <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Intent.FLAG_ACTIVITY_SINGLE_TOP | <br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Intent.FLAG_ACTIVITY_CLEAR_TOP);&nbsp;&nbsp;//&nbsp;화면이 없는데서 화면이 있는 걸 띄울 수 있게 함<br>
+showIntent.putExtra("command", "show");<br>
+startActivity(showIntent);<br><br>
++ 서비스에서 전달된 데이터는 <b>액티비티에서 onNewIntent()로 받는다!!</b><br><br>
+protected void <b>onNewIntent</b>(Intent intent) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if (intent != null) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String command = intent.getStringExtra("command");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;super.onNewIntent(intent);<br>
 }<br><br>
 
 ### ◆ 브로드캐스트 수신자

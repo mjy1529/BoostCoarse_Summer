@@ -3,7 +3,7 @@
 ### ◆ 액티비티 수명주기 (라이프 사이클)
 + <b>onCreate() → onStart() → onResume() → onPause() → onStop() → onDestroy()</b>
 
-+ 주로 onResume()과 onPause()에서 <b>getSharedPreferences를 사용하여 값을 저장하고 복구</b>한다.<br><br>
++ 주로 onResume()과 onPause()에서 <b>getSharedPreferences를 사용하여 값을 저장하고 복구</b><br><br>
 protected void <b>onPause()</b> {<br>
 &nbsp;&nbsp;&nbsp;&nbsp;super.onPause();<br>
 &nbsp;&nbsp;&nbsp;&nbsp;<b>SharedPreferences pref = getSharedPreferences("pref", Activity.MODE_PRIVATE);</b><br>
@@ -20,7 +20,31 @@ protected void <b>onResume()</b> {<br>
 }<br>
 
 ### ◆ 서비스
-+ 
++ <b>화면이 없는 상태에서 백그라운드 실행</b>
+
++ <b>프로세스가 종료되어도 시스템에서 자동으로 재시작</b>
+
++ 애플리케이션 구성요소 중 하나로 매니페스트에 등록해야 함<br><br>
+<service<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:name=".MyService"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:enabled="true"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:exported="true">&lt;/service><br><br>
+
++ <b>액티비티에서 Intent로 서비스 호출</b><br><br>
+Intent intent = new Intent(getApplicationContext(), <b>MyService.class</b>);&nbsp;&nbsp;// 서비스 클래스<br>
+intent.putExtra("command", "show");<br>
+<b>startService(intent);</b>&nbsp;&nbsp;// 액티비티 호출 시엔 startActivity(intent)<br><br>
+
++ 서비스는 시스템이 시작될 때 한번 실행되기 때문에 <b>액티비티에서 전달한 데이터는 onStartCommand()에서 받는다!!</b><br>
+onCreate() → onStartCommand() → onDestroy()<br><br>
+public int <b>onStartCommand</b>(Intent intent, int flags, int startId) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(intent == null) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return <b>Service.START_STICKY;</b>&nbsp;&nbsp;//&nbsp;서비스가 종료되었을 때 자동으로 실행시키기 위함<br>
+&nbsp;&nbsp;&nbsp;&nbsp;} else {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String command = intent.getStringExtra("command");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;return super.onStartCommand(intent, flags, startId);<br>
+}<br><br>
 
 ### ◆ 브로드캐스트 수신자
 + 

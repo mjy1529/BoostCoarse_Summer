@@ -1,7 +1,23 @@
 # 부스트코스 Android 학습 내용<br> 
 
-### ◆ 액티비티 수명주기
-+ 
+### ◆ 액티비티 수명주기 (라이프 사이클)
++ <b>onCreate() → onStart() → onResume() → onPause() → onStop() → onDestroy()</b>
+
++ 주로 onResume()과 onPause()에서 <b>getSharedPreferences를 사용하여 값을 저장하고 복구</b>한다.<br><br>
+protected void <b>onPause()</b> {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;super.onPause();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>SharedPreferences pref = getSharedPreferences("pref", Activity.MODE_PRIVATE);</b><br>
+&nbsp;&nbsp;&nbsp;&nbsp;SharedPreferences.Editor editor = pref.edit();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;editor.putString("name", "레드벨벳");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;editor.apply();<br>
+}<br><br>
+protected void <b>onResume()</b> {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;super.onResume();<br>
+&nbsp;&nbsp;&nbsp;&nbsp;<b>SharedPreferences pref = getSharedPreferences("pref", Activity.MODE_PRIVATE);</b><br>
+&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(pref != null) {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;String name = pref.getString("name", "");<br>
+&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+}<br>
 
 ### ◆ 서비스
 + 

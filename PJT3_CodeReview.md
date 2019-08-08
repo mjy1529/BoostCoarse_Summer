@@ -75,7 +75,7 @@ protected void <b>onNewIntent</b>(Intent intent) {<br>
 &lt;/receiver&gt;
 <br><br><br>
 
-# PJT3. 한줄평 화면으로 전환하기
+# PJT3. 한줄평 화면으로 전환하기 Code Review
 <table>
   <tr><td><img src="https://user-images.githubusercontent.com/25261296/62025945-8ca19300-b214-11e9-98b3-4ac83bc8ee70.png" width="250"></td>
       <td><img src="https://user-images.githubusercontent.com/25261296/62026008-b8bd1400-b214-11e9-9ee4-be9f548f032f.png" width="250"></td>

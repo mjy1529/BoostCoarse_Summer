@@ -51,4 +51,20 @@ ListFragment listFragment = (ListFragment) getSupportFragmentManager().findFragm
 ```
 <br><br>
 # PJT4. 영화목록과 바로가기 메뉴 Code Review
+<table>
+  <tr><td><img src="https://user-images.githubusercontent.com/25261296/62728177-1132b380-ba56-11e9-9895-d33faf5c5ad5.png" width="250"></td>
+      <td><img src="https://user-images.githubusercontent.com/25261296/62728184-13950d80-ba56-11e9-88e6-d925796447cd.png" width="250"></td>
+     <td><img src="https://user-images.githubusercontent.com/25261296/62728336-7f777600-ba56-11e9-9a7d-86e93ae80ac6.png" width="250"></td>
+      <td><img src="https://user-images.githubusercontent.com/25261296/62728187-155ed100-ba56-11e9-8ee2-25cc43a34eb4.png" width="250"></td>
+     </tr>
+  <tr>
+    <td colspan="2" align="center">MovieListFragment (ViewPager 사용)</td>
+    <td align="center">MovieDetailFragment</td>
+     <td align="center">바로가기 메뉴</td>
+  </tr>
+</table>
+
 ### ◆ Advice 1
+> 사용하지 않는 import는 삭제하고 제출할 것
+### ◆ Advice 2
+> 

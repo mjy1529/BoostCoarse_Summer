@@ -11,9 +11,11 @@
 
 + 프래그먼트 생명주기<br>
 <b>onAttach() → onCreate() → onCreateView() → onActivityCreated() → onStart() → onResume()<br>
-→ onPause() → onStop() → onDestroyView() → onDestroy() → onDetach()</b><br><br>
-** 프래그먼트는 액티비티 위에 올라갔을 때 프래그먼트로서 동작할 수 있기 때문에<br><b>액티비티 위에 올라갈 때 onAttach(), 액티비티에서 내려올 때 onDetach()를 호출</b>한다. **
-#### ◇ 프래그먼트 안에 있는 onCreateView()에서 인플레이션 진행
+→ onPause() → onStop() → onDestroyView() → onDestroy() → onDetach()</b>
+
++ 프래그먼트는 액티비티 위에 올라갔을 때 프래그먼트로서 동작할 수 있기 때문에<br><b>액티비티 위에 올라갈 때 onAttach(), 액티비티에서 내려올 때 onDetach()를 호출</b>한다.
+
++ 프래그먼트 안에 있는 <b>onCreateView()</b>에서 인플레이션 진행
 ```
 public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
    ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_main, container, false);
@@ -27,7 +29,7 @@ MainFragment fragment1 = new MainFragment();
 getSupportFragmentManager().beginTransaction().add(R.id.container, fragment1).commit();
 ```
 
-+ XML 레이아웃에 추가된 프래그먼트 호출하는 방법<br><br>
+#### ◇ XML 레이아웃에 추가된 프래그먼트 호출하는 방법<br><br>
 <b>activity_main.xml</b><br>
 ```
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -43,7 +45,7 @@ getSupportFragmentManager().beginTransaction().add(R.id.container, fragment1).co
 
 </LinearLayout>
 ```
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>MainActivity.class</b>
+<b>MainActivity.class</b>
 ```
 ListFragment listFragment = (ListFragment) getSupportFragmentManager().findFragmentById(R.id.listFragment);
 ```

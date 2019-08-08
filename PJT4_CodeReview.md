@@ -9,20 +9,40 @@
 
 + 액티비티 안에 있는 <b>프래그먼트 매니저가 관리</b>
 
-+ 프래그먼트 안에 있는 <b>onCreateView()에서 인플레이션 진행</b><br><br>
-public View <b>onCreateView</b>(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {<br>
-&nbsp;&nbsp;&nbsp;&nbsp;<b>ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_main, container, false);</b><br>
-&nbsp;&nbsp;&nbsp;&nbsp;return rootView;<br>
-}<br>
-
-+ 액티비티에서 프래그먼트를 추가하는 방법<br>
-MainFragment fragment1 = new MainFragment();<br>
-<b>getSupportFragmentManager().beginTransaction().add(R.id.container, fragment1).commit();</b><br><br>
-
 + 프래그먼트 생명주기<br>
 <b>onAttach() → onCreate() → onCreateView() → onActivityCreated() → onStart() → onResume()<br>
 → onPause() → onStop() → onDestroyView() → onDestroy() → onDetach()</b><br><br>
 ** 프래그먼트는 액티비티 위에 올라갔을 때 프래그먼트로서 동작할 수 있기 때문에 <b>액티비티 위에 올라갈 때 onAttach(), 액티비티에서 내려올 때 onDetach()를 호출</b>한다. **
+#### ◇ 프래그먼트 안에 있는 onCreateView()에서 인플레이션 진행
+```
+public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+   ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_main, container, false);
+   return rootView;
+}
+```
+
+#### ◇ 액티비티에서 프래그먼트를 추가하는 방법<br>
+```
+MainFragment fragment1 = new MainFragment();
+getSupportFragmentManager().beginTransaction().add(R.id.container, fragment1).commit();
+```
+
++ XML 레이아웃에 추가된 프래그먼트 호출하는 방법<br><br>
+<b>activity_main.xml</b><br>
+&lt;LinearLayout<br>
+&nbsp;&nbsp;&nbsp;&nbsp;android:layout_width="match_parent"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;android:layout_height="match_parent"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;android:orientation="vertical"&gt;<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;<b>fragment</b><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:id="@+id/listFragment"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>android:name="com.juyoung.myfragment.ListFragment"</b><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:layout_width="match_parent"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;android:layout_height="wrap_content" /&gt;<br><br>
+&lt;/LinearLayout&gt;<br><br>
+<b>MainActivity.class</b>
+```
+ListFragment listFragment = (ListFragment) getSupportFragmentManager().findFragmentById(R.id.listFragment);
+```
 <br><br><br>
 
 # PJT4. 영화목록과 바로가기 메뉴 Code Review

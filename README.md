@@ -7,3 +7,5 @@
 + [프로젝트3. 한줄평 화면으로 전환하기](https://github.com/mjy1529/BoostCourse_Summer/blob/master/PJT3_CodeReview.md)
 
 + [프로젝트4. 영화목록과 바로가기 메뉴](https://github.com/mjy1529/BoostCourse_Android/blob/master/PJT4_CodeReview.md)
+
++ [프로젝트5. 서버에서 영화정보 가져오기](https://github.com/mjy1529/BoostCourse_Android/blob/master/PJT5_CodeReview.md)

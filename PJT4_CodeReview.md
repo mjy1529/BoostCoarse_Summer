@@ -23,13 +23,13 @@ public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle sa
 }
 ```
 
-#### ◇ 액티비티에서 프래그먼트를 추가하는 방법<br>
+#### ◇ 액티비티에서 프래그먼트를 추가하는 방법
 ```
 MainFragment fragment1 = new MainFragment();
 getSupportFragmentManager().beginTransaction().add(R.id.container, fragment1).commit();
 ```
 
-#### ◇ XML 레이아웃에 추가된 프래그먼트 호출하는 방법<br><br>
+#### ◇ XML 레이아웃에 추가된 프래그먼트 호출하는 방법
 <b>activity_main.xml</b><br>
 ```
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"

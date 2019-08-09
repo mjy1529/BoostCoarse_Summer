@@ -58,8 +58,8 @@ ListFragment listFragment = (ListFragment) getSupportFragmentManager().findFragm
       <td><img src="https://user-images.githubusercontent.com/25261296/62728187-155ed100-ba56-11e9-8ee2-25cc43a34eb4.png" width="250"></td>
      </tr>
   <tr>
-    <td colspan="2" align="center">MovieListFragment (ViewPager 사용)</td>
-    <td align="center">MovieDetailFragment</td>
+    <td colspan="2" align="center">영화 목록<br>(MovieListFragment)</td>
+    <td align="center">상세보기 (MovieDetailFragment)</td>
      <td align="center">바로가기 메뉴</td>
   </tr>
 </table>

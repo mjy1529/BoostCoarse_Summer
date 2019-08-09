@@ -70,7 +70,7 @@ ListFragment listFragment = (ListFragment) getSupportFragmentManager().findFragm
 사용하지 않는 import는 삭제 후 제출하기
 
 ### ◆ Advice 2
-<b>동일한 MovieFragment와 fragment_movie.xml 중복 사용 금지</b>
+<b>동일한 MovieFragment.class와 fragment_movie.xml 중복 사용 금지</b>
 #### ◇ 수정 전
 + MovieFragment의 java 파일과 xml 파일을 각각 다섯 개씩 생성하여 사용
 ```
@@ -121,4 +121,70 @@ adapter.addItem(movieFragment5);
 ```
 
 ### ◆ Advice 3
-> Fragment에서 MainActivity 선언 해서 사용 하지 않기(상호 참조 제거)
+<b>Fragment에서 MainActivity 선언해서 사용하지 말 것!!</b><br>
+
+클래스 간 상호 의존성을 없애고 <b>독립적으로 설계</b>하기 위함
+#### ◇ 수정 전
++ MainActivity : 프래그먼트 교체 메소드 구현
+```
+public void onFragmentChange(int index) {
+  if (index == 0) {
+      getSupportFragmentManager().beginTransaction().replace(R.id.main_container, listFragment).commit();
+  } else if (index == 1) {
+      getSupportFragmentManager().beginTransaction().replace(R.id.main_container, detailFragment).commit();
+  }
+}
+```
++ MovieFragment : onAttach()에서 MainActivity 참조 후 MainActivity 메소드 호출
+```
+MainActivity activity;
+
+public void onAttach(Context context) {
+  super.onAttach(context);
+  activity = (MainActivity) getActivity();
+}
+
+detailBtn.setOnClickListener(new View.OnClickListener() {
+   @Override
+   public void onClick(View v) {
+       activity.onFragmentChange(1);
+   }
+});
+```
+#### ◇ 수정 후
++ <b>인터페이스 (Interface) 사용</b>
+
++ MovieFragment : 인터페이스 선언, onAttach()에서 Activity 참조
+```
+FragmentChangeCallback mCallback;
+
+public interface FragmentChangeCallback {
+  void onFragmentChange();
+}
+
+public void onAttach(Context context) {
+  super.onAttach(context);
+  mCallback = (FragmentChangeCallback) context;
+}
+```
++ MainActivity : 인터페이스 구현
+```
+public class MainActivity implements MovieFragment.FragmentChangeCallback {
+...
+   @Override
+   public void onFragmentChange() {
+     detailFragment = new MovieDetailFragment();
+     getSupportFragmentManager().beginTransaction().replace(R.id.main_container, detailFragment).commit();
+   }
+...
+}
+```
++ MovieFragment : 콜백 메소드 호출
+```
+detailBtn.setOnClickListener(new View.OnClickListener() {
+   @Override
+   public void onClick(View v) {
+       mCallback.onFragmentChange();
+   }
+});
+```

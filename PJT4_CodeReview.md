@@ -115,6 +115,8 @@ MovieFragment movieFragment2 = new MovieFragment()
       .newInstance(R.drawable.image2, "2. 공 조", "예매율 61.6% | 15세 관람가 | D-1");;
 adapter.addItem(movieFragment2);
 
+...
+
 MovieFragment movieFragment5 = new MovieFragment()
       .newInstance(R.drawable.image3, "5. 더 킹", "예매율 11.2%% | 12세 관람가");
 adapter.addItem(movieFragment5);

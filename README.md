@@ -9,3 +9,5 @@
 + [프로젝트4. 영화목록과 바로가기 메뉴](https://github.com/mjy1529/BoostCourse_Android/blob/master/PJT4_CodeReview.md)
 
 + [프로젝트5. 서버에서 영화정보 가져오기](https://github.com/mjy1529/BoostCourse_Android/blob/master/PJT5_CodeReview.md)
+
++ [프로젝트6. 영화정보를 단말에 저장하기](https://github.com/mjy1529/BoostCourse_Android/blob/master/PJT6_CodeReview.md)

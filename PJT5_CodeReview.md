@@ -29,6 +29,24 @@ StringRequest request = new StringRequest(
 request.setShouldCache(false);
 AppHelper.requestQueue.add(request); //요청 객체(request) 요청 큐에 넣기
 ```
+
+### ◆ Gson 사용법
++ JSON 문자열을 자바 객체로 변환해주는 라이브러리
+
++ build.gradle (Module:app)에 라이브러리 추가
+```
+implementation 'com.google.code.gson:gson:2.8.2'
+```
++ JSON에 맞는 자바 클래스 정의<br>
+이때, 변수 이름과 자료형은 JSON 속성의 이름, 자료형과 같아야 함
+
++ Gson 사용하여 변환
+```
+Gson gson = new Gson();
+
+// MovieListResult 클래스 객체로 변환  
+MovieListResult listResult = gson.fromJson(response, MovieListResult.class);    
+```
 <br>
 
 # PJT5. 서버에서 영화정보 가져오기 Code Review

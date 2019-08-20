@@ -77,3 +77,12 @@ public interface FragmentChangeCallback {
     void onFragmentChange(String id);
 }
 ```
+
+#### ◇ 추가 학습 내용
++ <b>Fragment 생성 시에는 생성자를 오버로딩하지 않고</b> 필요한 파라미터가 있다면 newInstance() 함수를 정의하여 Bundle 객체에 담는 것이 일반적이다.<br>
+[참고] https://woovictory.github.io/2019/02/06/Android-Why-is-Need-default-constructor-of-fragment/<br>
+
++ <b>isEmpty()와 NULL의 차이</b><br>
+<b>isEmpty()는 'size() == 0'과 같은 의미</b>이다. 인스턴스는 생성되었으나 list 안에 값이 존재하지 않는 상태를 말한다.<br>
+<b>NULL은</b> 인스턴스가 생성되지 않은 상태로 메모리에 <b>아무런 주소값을 받지 않은 상태</b>를 말한다.<br>
+[참고] https://diaryofgreen.tistory.com/185

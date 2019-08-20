@@ -71,8 +71,7 @@ ex) public static final int POST_COMMENT_ACTIVITY = 0;
 
 ### ◆ Advice 2
 <b>프래그먼트 인터페이스를 별도의 클래스로 작성할 것</b><br>
-
-<b>(액티비티에서 인터페이스를 구현)</b>
+<b>(액티비티에서 인터페이스 구현)</b>
 ```
 public interface FragmentChangeCallback {
     void onFragmentChange(String id);

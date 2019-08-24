@@ -50,5 +50,22 @@ if (result.code == 200) { //응답코드 확인 후 처리
 ```
 ### ◆ Advice 2
 ### ◆ Advice 3
-### ◆ Advice 4
-W/OkHttpClient: A connection to http://boostcourse-appapi.connect.or.kr:10000/ was leaked. Did you forget to close a response body?
+### ◆ Question & Advice 4
+<b>Question</b><br>
+서버 요청 시 아래와 같은 메세지가 가끔씩 로그에 찍히곤 합니다. Volley 라이브러리에서 response body를 close하는 방법이 있나요?
+``` 
+W/OkHttpClient: A connection to http://boostcourse-appapi.connect.or.kr:10000/ was leaked. 
+Did you forget to close a response body? 
+```
+<b>Answer</b><br>
++ 해당 메시지는 Glide 라이브러리에서 OkHttp를 사용하고 OkHttp 내부에서 발생하는 메시지
+
++ response body를 읽고나서 해당 stream을 닫지 않아서 발생하는 메시지인데 Glide 라이브러리 내부의 OkHttp에서 발생시키므로 현재 app에서 코드 대응 처리는 불가할 것
+
++ Glide나 OkHttp는 이미지만 다운로드하기에는 너무 무거운 라이브러리
+
++ 따라서, asynctask 등을 사용하여 <b>image downloader를 직접 구현하는 방법을 권장함</b>
+### ◆ Advice 5
+MVC 패턴으로 보면 M에 대한 부분이 대부분 C에 녹여져 있음<br>
+따라서, <b>Network나 Database 관련 코드들은 UI단과 별개의 모듈로 분리하여 관리할 것</b><br>
+

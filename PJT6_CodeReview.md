@@ -32,10 +32,11 @@ ConnectivityManager manager = (ConnectivityManager) context.getSystemService(Con
 ### ◆ Advice 1
 <b>INSERT OR REPLACE 구문 사용할 것!</b>
 #### ◇ 수정 전
-+ 데이터 추가 및 업데이트 할 때 DELETE로 모든 행 삭제 후 INSERT 함
++ 데이터 추가 및 업데이트 할 때 <b>DELETE</b>로 모든 행 삭제 후 <b>INSERT</b> 함
 + 두 개의 SQL문 사용
 ```
 public void insertMovieList(ArrayList<MovieList> movieList) { 
+
     String sql = "DELETE FROM " + TABLE_MOVIE_LIST; //모든 행 삭제(DELETE)
     db.execSQL(sql);
 
@@ -48,6 +49,7 @@ public void insertMovieList(ArrayList<MovieList> movieList) {
 + <b>중복된 값을 가지는 행을 추가할 때는 UPDATE, 없으면 INSERT하는 INSERT OR REPLACE 구문으로 수정</b>
 ```
 public void insertMovieList(ArrayList<MovieList> movieList) {
+
     //INSERT OR REPLACE 사용
     String sql = "INSERT OR REPLACE INTO " + TABLE_MOVIE_LIST + " VALUES (?, ?, ?, ?, ?)"; 
     ...
@@ -56,11 +58,14 @@ public void insertMovieList(ArrayList<MovieList> movieList) {
 ```
 
 ### ◆ Advice 2
-<b></b>
-#### ◇ 수정 전
-
+<b>추천하기 버튼의 경우 서버 요청 후 응답이 올 때까지 해당 버튼이 동작하지 않도록 처리할 것</b>
 #### ◇ 수정 후
-
+```
+... (서버요청 전)
+recommendTv.setEnabled(false); //추천하기 클릭 비활성화
+... (서버요청 후)
+recommendTv.setEnabled(true); //추천하기 클릭 활성화
+```
 ### ◆ Advice 3
 <b>서버에서 응답 받을 때 반드시 응답코드를 확인하고 처리할 것</b><br>
 #### ◇ 수정 전
@@ -71,6 +76,7 @@ movieList = result.result;
 dbHelper.insertMovieList(movieList);
 ```
 #### ◇ 수정 후
+> 응답코드 확인하는 코드 추가
 ```
 Gson gson = new Gson();
 MovieListResult result = gson.fromJson(response, MovieListResult.class);

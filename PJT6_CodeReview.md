@@ -30,6 +30,10 @@ ConnectivityManager manager = (ConnectivityManager) context.getSystemService(Con
 </table>
 
 ### ◆ Advice 1
+<b></b>
+### ◆ Advice 2
+<b></b>
+### ◆ Advice 3
 <b>서버에서 응답 받을 때 반드시 응답코드를 확인하고 처리할 것</b><br>
 #### ◇ 수정 전
 ```
@@ -48,8 +52,6 @@ if (result.code == 200) { //응답코드 확인 후 처리
     dbHelper.insertMovieList(movieList);
 }
 ```
-### ◆ Advice 2
-### ◆ Advice 3
 ### ◆ Question & Advice 4
 <b>Question</b><br>
 서버 요청 시 아래와 같은 메세지가 가끔씩 로그에 찍히곤 합니다. Volley 라이브러리에서 response body를 close하는 방법이 있나요?
@@ -67,6 +69,6 @@ Did you forget to close a response body?
 + 따라서, asynctask 등을 사용하여 <b>image downloader를 직접 구현하는 방법을 권장함</b>
 ### ◆ Advice 5
 MVC 패턴으로 보면 M에 대한 부분이 대부분 C에 녹여져 있음<br>
-따라서, <b>Network나 Database 관련 코드들은 UI단과 별개의 모듈로 분리하여 관리할 것!!</b><br><br>
+코드 변경 및 수정과 유지보수를 고려하여 <b>Network나 Database 관련 코드들은 UI단과 별개의 모듈로 분리하여 관리할 것!!</b><br><br>
 &lt;리뷰어님이 이해를 위해 그려주신 도식&gt;<br>
 <img src="https://user-images.githubusercontent.com/25261296/63632798-5f5fcd80-c678-11e9-9ba1-bc5d20115700.PNG" width="600">

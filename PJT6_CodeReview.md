@@ -67,5 +67,6 @@ Did you forget to close a response body?
 + 따라서, asynctask 등을 사용하여 <b>image downloader를 직접 구현하는 방법을 권장함</b>
 ### ◆ Advice 5
 MVC 패턴으로 보면 M에 대한 부분이 대부분 C에 녹여져 있음<br>
-따라서, <b>Network나 Database 관련 코드들은 UI단과 별개의 모듈로 분리하여 관리할 것</b><br>
-
+따라서, <b>Network나 Database 관련 코드들은 UI단과 별개의 모듈로 분리하여 관리할 것!!</b><br><br>
+&lt;리뷰어님이 이해를 위해 그려주신 도식&gt;<br>
+<img src="https://user-images.githubusercontent.com/25261296/63632798-5f5fcd80-c678-11e9-9ba1-bc5d20115700.PNG" width="600">

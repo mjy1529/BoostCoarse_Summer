@@ -56,7 +56,6 @@ public void insertMovieList(ArrayList<MovieList> movieList) {
     db.execSQL(sql, params);
 }
 ```
-
 ### ◆ Advice 2
 <b>추천하기 버튼의 경우 서버 요청 후 응답이 올 때까지 해당 버튼이 동작하지 않도록 처리할 것</b>
 #### ◇ 수정 후
@@ -86,7 +85,6 @@ if (result.code == 200) { //응답코드 확인 후 처리
     dbHelper.insertMovieList(movieList);
 }
 ```
-
 ### ◆ Question & Advice 4
 <b>Question</b><br>
 + 서버 요청 시 아래와 같은 메세지가 가끔씩 로그에 찍히곤 합니다. Volley 라이브러리에서 response body를 close하는 방법이 있나요?
@@ -102,6 +100,38 @@ Did you forget to close a response body?
 + Glide나 OkHttp는 이미지만 다운로드하기에는 너무 무거운 라이브러리
 
 + 따라서, asynctask 등을 사용하여 <b>image downloader를 직접 구현하는 방법을 권장함</b>
+
+#### ◇ 수정 후
++ Glide 대신 <b>Volley 라이브러리의 ImageLoader 클래스를 사용</b>하여 이미지 로드
+> ImageDownloader.java
+```
+public ImageRequest getImageRequest() {
+    ImageRequest request = new ImageRequest(
+            imageUrl,
+            new Response.Listener<Bitmap>() {
+                @Override
+                public void onResponse(Bitmap response) {
+                    imageView.setImageBitmap(response);
+                }
+            }, 0, 0, null,
+
+            new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    Log.d("ImageDownloader", "error : " + error.getMessage());
+                }
+            }
+    );
+    request.setShouldCache(false);
+    return request;
+}
+```
+> MovieFragment.java
+```
+ImageDownloader downloader = new ImageDownloader(posterIv, data.getThumb());
+requestQueue.add(downloader.getImageRequest());
+```
+#### ◇ 추가 학습 내용
 
 ### ◆ Advice 5
 MVC 패턴으로 보면 M(Model)에 대한 부분이 대부분 C(Controller)에 녹여져 있음<br>

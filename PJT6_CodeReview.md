@@ -136,7 +136,7 @@ MVC 패턴으로 보면 M(Model)에 대한 부분이 대부분 C(Controller)에 
 <b>코드 변경 및 수정과 유지보수를 고려하여 Network나 Database 관련 코드들은 UI단과 별개의 모듈로 분리하여 관리할 것!!</b><br><br>
 &lt;리뷰어님이 이해를 위해 그려주신 도식&gt;<br>
 <img src="https://user-images.githubusercontent.com/25261296/63632798-5f5fcd80-c678-11e9-9ba1-bc5d20115700.PNG" width="650">
-### ◇ 학습 중 발생한 이슈
+### ★ 학습 중 발생한 이슈 ★
 앱 실행 중 <b>OS가 안드로이드 9.0(Pie)</b>인 기기로 서버 요청을 할 때 아래와 같은 에러가 발생하였다<br>
 ```
 java.io.IOException: Cleartext HTTP traffic to boostcourse-appapi.connect.or.kr not permitted

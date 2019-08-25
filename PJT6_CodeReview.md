@@ -131,8 +131,24 @@ public ImageRequest getImageRequest() {
 ImageDownloader downloader = new ImageDownloader(posterIv, data.getThumb());
 requestQueue.add(downloader.getImageRequest());
 ```
-#### ◇ 추가 학습 내용
-
+#### ◇ 학습 중 발생한 이슈
+앱 실행 중 <b>OS가 안드로이드 9.0(Pie)</b>인 기기로 서버 요청을 할 때 아래와 같은 에러가 발생하였다<br>
+```
+java.io.IOException: Cleartext HTTP traffic to boostcourse-appapi.connect.or.kr not permitted
+```
+<b>안드로이드 9.0에서는 https를 사용하도록 강제</b>하는데 부스트코스에서 제공 받은 API 주소는 http이기 때문에 발생한 것이었다!<br><br>
+<b>해결 방법 1 : 네트워크 주소를 https로 변경할 것<br>
+=> https로 변경하여 실행시켰으나 아래와 같은 또 다른 에러가 발생 (실패) </b>
+```
+javax.net.ssl.SSLHandshakeException: Handshake failed
+```
+<b>해결 방법 2 : AndroidManifest.xml에 usesCleartextTraffic 속성을 true로 설정할 것 (성공!) </b>
+```
+<application
+    ...         
+    android:usesCleartextTraffic="true">
+```
+##### [참고] https://gun0912.tistory.com/80
 ### ◆ Advice 5
 MVC 패턴으로 보면 M(Model)에 대한 부분이 대부분 C(Controller)에 녹여져 있음<br>
 <b>코드 변경 및 수정과 유지보수를 고려하여 Network나 Database 관련 코드들은 UI단과 별개의 모듈로 분리하여 관리할 것!!</b><br><br>

@@ -131,6 +131,7 @@ public ImageRequest getImageRequest() {
 ImageDownloader downloader = new ImageDownloader(posterIv, data.getThumb());
 requestQueue.add(downloader.getImageRequest());
 ```
++ ImageLoader를 사용하려 했으나 이미지 로딩 시간이 오래걸려 Picasso 라이브러리를 사용하기로 함
 ### ◆ Advice 5
 MVC 패턴으로 보면 M(Model)에 대한 부분이 대부분 C(Controller)에 녹여져 있음<br>
 <b>코드 변경 및 수정과 유지보수를 고려하여 Network나 Database 관련 코드들은 UI단과 별개의 모듈로 분리하여 관리할 것!!</b><br><br>

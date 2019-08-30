@@ -1,4 +1,35 @@
 # 부스트코스 Android 학습 내용
+### ◆ 음악 재생하기
++ play audio
+```
+MediaPlayer player = new MediaPlayer();
+player.setDataSource(url);
+player.prepare();
+player.start();
+```
+
++ pause audio
+```
+if (player != null) {
+    position = player.getCurrentPosition(); //position 변수에 재생 위치 저장
+    player.pause();
+}
+```
+
++ resume audio
+```
+if (player != null && !player.isPlaying()) {
+    player.seekTo(position);
+    player.start();
+}
+```
+
++ stop audio
+```
+if (player != null && player.isPlaying()) {
+    player.stop();
+}
+```
 ### ◆ 동영상 재생하기
 <img src="https://user-images.githubusercontent.com/25261296/64033597-bccbb100-cb87-11e9-9351-dbf7d350f423.png" width="180"><br>
 + videoView 세팅
@@ -16,7 +47,7 @@ videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
     }
 });
 ```
-+ 동영상 재생
++ play video
 ```
 videoView.seekTo(0); //처음부터 실행
 videoView.start();

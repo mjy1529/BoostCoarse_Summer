@@ -17,7 +17,7 @@
 
 ### ◆ Advice 1
 <b>변수명을 i로 사용하지 말 것</b><br>
-> 일반적으로 <b>i, n은 지역변수로 너무 많이 사용하는 변수명</b>이므로 공동작업이 이루어질 때 다른 개발자가 모르고 for문 등에서 i를 지역변수로 선언할 경우가 발생함. <b>특히나 전역변수로는 절대 사용하면 안됨!!</b>
+일반적으로 <b>i, n은 지역변수로 너무 많이 사용하는 변수명</b>이므로 공동작업이 이루어질 때 다른 개발자가 모르고 for문 등에서 i를 지역변수로 선언할 경우가 발생함. <b>특히나 전역변수로는 절대 사용하면 안됨!!</b>
 #### ◇ 수정 전
 + 매개변수명 i
 ```
@@ -70,7 +70,7 @@ if (videoStr != null) {
 }
 ```
 ### ◆ Advice 3
-** Adevice 3부터는 [PJT6 CodeReview의 Advice5](https://github.com/mjy1529/BoostCourse_Android/edit/master/PJT6_CodeReview.md)를 적용한 코드에 대한 리뷰입니다 **
+** Adevice 3부터는 [PJT6 CodeReview의 Advice5](https://github.com/mjy1529/BoostCourse_Android/blob/master/PJT6_CodeReview.md)를 적용한 코드에 대한 리뷰입니다 **
 <br><br>
 # 부스트코스 Android 학습 내용
 ### ◆ 음악 재생하기

@@ -52,7 +52,8 @@ videoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
 videoView.seekTo(0); //처음부터 실행
 videoView.start();
 ```
-<br><br>
+<br>
+
 # PJT7. 사진보기와 동영상 재생 Code Review
 ### ◆ 개요
 + 영화상세 화면에 <b>갤러리 목록을 추가</b>하여 사진과 동영상을 볼 수 있게 함

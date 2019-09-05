@@ -59,8 +59,8 @@ videoView.start();
 + 영화상세 화면에 <b>갤러리 목록을 추가</b>하여 사진과 동영상을 볼 수 있게 함
 <table>
     <tr>
-        <td><img src="https://user-images.githubusercontent.com/25261296/64137487-79956a80-ce33-11e9-9808-2ae6fdb014af.png"></td>
-        <td><img src="https://user-images.githubusercontent.com/25261296/64137488-79956a80-ce33-11e9-9aee-319fb00db804.png"></td>
+        <td><img src="https://user-images.githubusercontent.com/25261296/64323958-73081e00-d000-11e9-9133-715556529788.png"></td>
+        <td><img src="https://user-images.githubusercontent.com/25261296/64323955-73081e00-d000-11e9-9ab9-d100e14a642d.png"></td>
         <td><img src="https://user-images.githubusercontent.com/25261296/64137489-7a2e0100-ce33-11e9-83be-baea8a9687f8.png"></td>
         <td><img src="https://user-images.githubusercontent.com/25261296/64137659-95e5d700-ce34-11e9-9442-f1f8137ec936.png"></td>
     </tr>

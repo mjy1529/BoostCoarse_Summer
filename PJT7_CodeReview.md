@@ -119,21 +119,44 @@ viewPager.setOffscreenPageLimit(pageLimit);
 
 ### ◆ Advice 4
 ** Adevice 4부터는 이번 프로젝트 관련 내용이 아닌 [PJT6 CodeReview의 Advice5](https://github.com/mjy1529/BoostCourse_Android/blob/master/PJT6_CodeReview.md#-advice-5)를 적용한 후 받은 리뷰입니다. **<br><br>
-<b>CommentAdapter에서 '추천하기' 서버연동 역시 클래스로 분리하여 구현할 것!!</b><br>
-일반적으로 서버는 개발 및 테스트를 위해 보통 2~3대를 사용하며 그만큼 필요한 정보들(요청 URL, 파라미터, 요청 방식 등)이 많아지기 때문에 서버연동 객체를 각각 두며 <b>서버 연동규격서를 기준</b>으로 구현되어야 한다.<br>
 #### cf. 서버 연동과 데이터베이스를 모듈로 분리하여 수정한 클래스 구조
 <table>
     <tr>
-        <td><img src="https://user-images.githubusercontent.com/25261296/64155978-d82c0a00-ce6e-11e9-9432-066395581a67.PNG" width="150"></td>
+        <td><img src="https://user-images.githubusercontent.com/25261296/64155978-d82c0a00-ce6e-11e9-9432-066395581a67.PNG" width="165"></td>
         <td><img src="https://user-images.githubusercontent.com/25261296/64155974-d7937380-ce6e-11e9-9087-4bb939eb43db.PNG" width="150"></td>
-        <td><img src="https://user-images.githubusercontent.com/25261296/64168159-e46f9180-ce85-11e9-90de-9076cc87606a.PNG" width="170"></td>
+        <td><img src="https://user-images.githubusercontent.com/25261296/64316727-9c20b280-cff0-11e9-9201-3f878b7bdd4a.PNG" width="150"></td>
     </tr>
     <tr>
         <td align="center">전체 클래스 구조</td>
         <td align="center">adapter와 data</td>
-        <td align="center">database와 netwrok</td>
+        <td align="center">database와 server</td>
     </tr>
 </table>
+
+<b>서버 연동 객체 수정할 것!</b><br>
+일반적으로 서버는 개발 및 테스트를 위해 보통 2~3대를 사용하며 그만큼 필요한 정보들(요청 URL, 파라미터, 요청 방식 등)이 많아지기 때문에 서버연동 객체를 각각 두며 <b>서버 연동규격서를 기준</b>으로 구현되어야 한다.<br>
+#### ◇ 수정 후
+> MovieListApi.java
++ 객체에 request URL, request Parameter를 갖도록 구성
+```
+public class MovieListApi {
+
+    private final String url = "/movie/readMovieList"; //요청 URL
+    private String type; //파라미터
+
+    public MovieListApi(String type) {
+        this.type = type;
+    }
+
+    String getUrl() {
+        return url + "?type=" + type;
+    }
+
+    String getType() {
+        return type;
+    }
+}
+```
 
 ### ◆ Advice 5
 <b>Network를 포함한 Model단에서 토스트메시지를 포함한 UI 관련 action 처리를 하지 말 것!</b>

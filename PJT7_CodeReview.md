@@ -163,7 +163,7 @@ public class MovieListApi {
 ServerConnection 클래스에서 단말기의 인터넷 연결 여부에 따라 데이터를 서버에서 받아올 것인지, 데이터베이스에서 불러올 것인지를 판단하도록 하였습니다.<br>이때, <b>서버에서 받아올 경우 volley 라이브러리의 callback으로 데이터를 바로 받지 못해 응답 받는 시점을 알기 위해 Handler를 사용</b>하게 되었는데 더 좋은 방법이 있는지 알고 싶습니다.
 #### ▷ Answer
 onResponse(), onErrorResponse()는 이미 volley에서 handler를 거쳐서 온 메소드이기 때문에 또 다시 handler를 걸어줄 필요는 없습니다. <b>리스너를 붙이는 것이 가장 심플한 방법</b>입니다.<br>
-cf. 기본적으로 <b>리스너는 어떠한 시점을 캐치하여 그 시점에 다른 동작을 하고자 할 때 쓰임</b>
+(cf. 기본적으로 <b>리스너는 어떠한 시점을 캐치하여 그 시점에 다른 동작을 하고자 할 때 쓰임</b>)
 #### ◇ 수정 후
 > ServerConnection.java
 + Interface 선언, Listener 객체와 setter 생성
@@ -213,5 +213,5 @@ private void processMovieListResponse(String response) {
 ```
 
 ### ◆ Advice 5
-<b>Network를 포함한 Model단에서 토스트메시지를 포함한 UI 관련 action 처리를 하지 말 것!</b><br>
+<b>Network를 포함한 Model단에서 토스트메시지를 포함한 UI 관련 action 처리 하지 말 것!</b><br>
 에러코드를 전달하여 UI쪽에서 전적으로 처리하도록 맡겨야 한다.

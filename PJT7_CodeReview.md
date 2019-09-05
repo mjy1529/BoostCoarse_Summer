@@ -118,7 +118,7 @@ viewPager.setOffscreenPageLimit(pageLimit);
 ```
 
 ### ◆ Advice 4
-** Adevice 4부터는 이번 프로젝트 관련 내용이 아닌 [PJT6 CodeReview의 Advice5](https://github.com/mjy1529/BoostCourse_Android/blob/master/PJT6_CodeReview.md#-advice-5)를 적용한 후 받은 리뷰입니다. **<br><br>
+** Adevice 4부터는 이번 프로젝트 관련 내용이 아닌 [PJT6 CodeReview의 Advice5](https://github.com/mjy1529/BoostCourse_Android/blob/master/PJT6_CodeReview.md#-advice-5)를 적용한 후 받은 리뷰입니다. **<br>
 #### cf. 서버 연동과 데이터베이스를 모듈로 분리하여 수정한 클래스 구조
 <table>
     <tr>
@@ -131,10 +131,10 @@ viewPager.setOffscreenPageLimit(pageLimit);
         <td align="center">adapter와 data</td>
         <td align="center">database와 server</td>
     </tr>
-</table>
+</table><br>
 
 <b>서버 연동 객체 수정할 것!</b><br>
-일반적으로 서버는 개발 및 테스트를 위해 보통 2~3대를 사용하며 그만큼 필요한 정보들(요청 URL, 파라미터, 요청 방식 등)이 많아지기 때문에 서버연동 객체를 각각 두며 <b>서버 연동규격서를 기준</b>으로 구현되어야 한다.<br>
+일반적으로 서버는 개발 및 테스트를 위해 보통 2~3대를 사용하며 그만큼 필요한 정보들(요청 URL, 파라미터, 요청 방식, HTTP 헤더 정보, MIME 타입, timeout 시간값 등)이 많아지기 때문에 서버연동 객체를 각각 두며 <b>서버 연동규격서를 기준</b>으로 구현되어야 한다.<br>
 #### ◇ 수정 후
 > MovieListApi.java
 + 객체에 request URL, request Parameter를 갖도록 구성
@@ -158,5 +158,60 @@ public class MovieListApi {
 }
 ```
 
+### ◆ Question & Answer
+#### ▷ Question
+ServerConnection 클래스에서 단말기의 인터넷 연결 여부에 따라 데이터를 서버에서 받아올 것인지, 데이터베이스에서 불러올 것인지를 판단하도록 하였습니다.<br>이때, <b>서버에서 받아올 경우 volley 라이브러리의 callback으로 데이터를 바로 받지 못해 응답 받는 시점을 알기 위해 Handler를 사용</b>하게 되었는데 더 좋은 방법이 있는지 알고 싶습니다.
+#### ▷ Answer
+onResponse(), onErrorResponse()는 이미 volley에서 handler를 거쳐서 온 메소드이기 때문에 또 다시 handler를 걸어줄 필요는 없습니다. <b>리스너를 붙이는 것이 가장 심플한 방법</b>입니다.<br>
+cf. 기본적으로 <b>리스너는 어떠한 시점을 캐치하여 그 시점에 다른 동작을 하고자 할 때 쓰임</b>
+#### ◇ 수정 후
+> ServerConnection.java
++ Interface 선언, Listener 객체와 setter 생성
+```
+public class ServerConnection {
+    ...
+    private MovieListListener movieListListener; // Listener 객체 생성
+    
+    public interface MovieListListener { // Interface 선언
+        void onReceive(ArrayList<MovieList> list);
+    }
+
+    public void setMovieListListener(MovieListListener listener) { // setter 생성
+        this.movieListListener = listener;
+    }
+    ...
+}
+```
+> MovieListFragment.java
++ Interface 구현, Listener 등록
+```
+public class MovieListFragment extends Fragment implements ServerConnection.MovieListListener { // Interface 구현
+
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) { 
+        ...
+        ServerConnection conn = ServerConnection.getInstance(getContext());
+        conn.setMovieListListener(this); // Listener 등록
+    }
+
+    @Override
+    public void onReceive(ArrayList<MovieList> list) { // 구현
+        initViewPager(list);
+        Toast.makeText(getContext(), R.string.alert_connected, Toast.LENGTH_SHORT).show();
+    }
+}
+```
+> ServerConnection.java
++ 리스너 호출
+```
+private void processMovieListResponse(String response) {
+    ...
+    if (result.code == RESULT_OK) {
+        ArrayList<MovieList> movieList = result.result;
+        movieListListener.onReceive(movieList); // listener 호출
+    }
+}
+```
+
 ### ◆ Advice 5
-<b>Network를 포함한 Model단에서 토스트메시지를 포함한 UI 관련 action 처리를 하지 말 것!</b>
+<b>Network를 포함한 Model단에서 토스트메시지를 포함한 UI 관련 action 처리를 하지 말 것!</b><br>
+에러코드를 전달하여 UI쪽에서 전적으로 처리하도록 맡겨야 한다.

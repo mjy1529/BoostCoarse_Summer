@@ -14,4 +14,4 @@
 
 + [프로젝트7. 사진보기와 동영상 재생](https://github.com/mjy1529/BoostCourse_Android/blob/master/PJT7_CodeReview.md)
 
-+ 프로젝트8. 영화 앱을 더 즐겁게
++ [프로젝트8. 영화 앱을 더 즐겁게](https://github.com/mjy1529/BoostCourse_Android/blob/master/PJT8_CodeReview.md)
